@@ -1,0 +1,21 @@
+- name: test windows registry module
+  hosts: win
+  connection: winrm
+  gather_facts: false
+
+  tasks:
+    - name: Cambiar registro NoWarningNoElevationOnInstall
+      win_regedit:
+        key: HKLM:\Software\Policies\Microsoft\Windows NT\Printers\PointAndPrint
+        name: NoWarningNoElevationOnInstall
+        data: 0
+        type: dword
+        state: present
+    - name: Cambiar registro UpdatePromptSettings
+      win_regedit:
+        key: HKLM:\Software\Policies\Microsoft\Windows NT\Printers\PointAndPrint
+        name: UpdatePromptSettings
+        data: 0
+        type: dword
+        state: present
+
