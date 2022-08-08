@@ -1,5 +1,5 @@
 - name: win_copy module demo
-  hosts: win
+  hosts: all
   become: false
   gather_facts: false
   vars:
