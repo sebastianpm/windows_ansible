@@ -1,0 +1,12 @@
+- name: win_copy module demo
+  hosts: win
+  become: false
+  gather_facts: false
+  vars:
+    source: "/files/"
+    destination: "/temp/"
+  tasks:
+    - name: copiar install zabbix
+      ansible.windows.win_copy:
+        src: "{{ source }}"
+        dest: "{{ destination }}"
