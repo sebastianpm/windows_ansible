@@ -3,10 +3,10 @@
   become: false
   gather_facts: false
   vars:
-    source: "/files/"
-    destination: "/temp/"
+    source: "report.txt"
+    destination: "Desktop/report.txt"
   tasks:
-  - name: copiar install zabbix
+    - name: copy report.txt
       ansible.windows.win_copy:
         src: "{{ source }}"
         dest: "{{ destination }}"
