@@ -6,6 +6,7 @@
     source: "/files/"
     destination: "/temp/"
   tasks:
+  - name: copiar install zabbix
       ansible.windows.win_copy:
         src: "{{ source }}"
         dest: "{{ destination }}"
