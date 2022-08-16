@@ -8,4 +8,4 @@
 
        name: Zabbix Agent 2
 
-       state: restart
+       state: restarted
