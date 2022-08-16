@@ -1,0 +1,11 @@
+- hosts: win
+
+  tasks:
+
+   - name: restart service zabbix
+
+     win_service:
+
+       name: Zabbix Agent 2
+
+       state: restart
