@@ -1,0 +1,11 @@
+- hosts: all
+
+  tasks:
+
+   - name: restart service Tomcat6
+
+     win_service:
+
+       name: Tomcat6
+
+       state:  restarted
