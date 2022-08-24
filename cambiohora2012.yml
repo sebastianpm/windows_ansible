@@ -1,0 +1,186 @@
+- name: test windows registry module
+  hosts: win
+  connection: winrm
+  gather_facts: false
+
+  tasks:
+    - name: Cambiar registro Hora MUI_Display
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: MUI_Display
+        data: "@tzres.dll,-91"
+        type: string
+        state: present
+
+    - name: Std Pacific SA Standard Time
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: Std
+        data: "Pacific SA Standard Time"
+        type: string
+        state: present
+
+    - name: MUI_Std
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: MUI_Std
+        data: "@tzres.dll,-92"
+        type: string
+        state: present
+
+    - name: Dlt Pacific SA Daylight Time
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: Dlt
+        data: Pacific SA Daylight Time
+        type: string
+        state: present
+    
+    - name: MUI_Dlt
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: MUI_Dlt
+        data: "@tzres.dll,-91"
+        type: string
+        state: present
+    
+    - name: Display
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: Display
+        data: "(UTC-04:00) Santiago"
+        type: string
+        state: present
+    
+    - name: MapID
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: MapID
+        data: "-1,82"
+        type: string
+        state: present
+
+    - name: MTZI
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
+        name: TZI2
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,01,00,17,00,3b,\ 00,3b,00,e7,03,00,00,09,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+        
+    - name: Cambiar registro Dynamic DST 2014
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2014
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,05,00,17,00,\ 3b,00,3b,00,e7,03,00,00,09,00,06,00,01,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2010
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2010
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,01,00,17,00,\ 3b,00,3b,00,e7,03,00,00,0a,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2011
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2011
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,05,00,06,00,01,00,17,00,\ 3b,00,3b,00,e7,03,00,00,08,00,06,00,03,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2007
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2007
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,03,00,06,00,02,00,17,00,\ 3b,00,3b,00,e7,03,00,00,0a,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2012
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2012
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,05,00,17,00,\ 3b,00,3b,00,e7,03,00,00,09,00,06,00,01,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2008
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2008
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,03,00,06,00,05,00,17,00,\ 3b,00,3b,00,e7,03,00,00,0a,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2013
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2013
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,05,00,17,00,\ 3b,00,3b,00,e7,03,00,00,09,00,06,00,01,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+    
+    - name: Cambiar registro Dynamic DST 2009
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2009
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,03,00,06,00,02,00,17,00,\ 3b,00,3b,00,e7,03,00,00,0a,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2015
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2015
+        data: "b4,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,00,00,00,00,00,00,00,00,\ 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00"
+        type: binary
+        state: present
+    - name: Cambiar registro Dynamic DST 2016
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2016
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,05,00,06,00,02,00,17,00,\ 3b,00,3b,00,e7,03,00,00,08,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2017
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2017
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,05,00,06,00,02,00,17,00,\ 3b,00,3b,00,e7,03,00,00,08,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present   
+    - name: Cambiar registro Dynamic DST 2018
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2018
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,05,00,06,00,02,00,17,00,\ 3b,00,3b,00,e7,03,00,00,08,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present
+
+    - name: Cambiar registro Dynamic DST 2019
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: 2019
+        data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,01,00,17,00,3b,\ 00,3b,00,e7,03,00,00,09,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
+        type: binary
+        state: present  
+    
+    - name: Cambiar registro FirstEntry
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: FirstEntry
+        data: 2007
+        type: dword
+        state: present  
+    - name: Cambiar registro LastEntry
+      win_regedit:
+        key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
+        name: LastEntry
+        data: 2019
+        type: dword
+        state: present
