@@ -1,5 +1,5 @@
 - name: test windows registry module
-  hosts: win
+  hosts: all
   connection: winrm
   gather_facts: false
 
