@@ -8,7 +8,7 @@
       win_regedit:
         key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time
         name: MUI_Display
-        data: "@tzres.dll,-91"
+        data: "@tzres.dll,-90"
         type: string
         state: present
 
@@ -67,7 +67,7 @@
         data: "f0,00,00,00,00,00,00,00,c4,ff,ff,ff,00,00,04,00,06,00,01,00,17,00,3b,\ 00,3b,00,e7,03,00,00,09,00,06,00,02,00,17,00,3b,00,3b,00,e7,03"
         type: binary
         state: present
-        
+
     - name: Cambiar registro Dynamic DST 2014
       win_regedit:
         key: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones\Pacific SA Standard Time\Dynamic DST
@@ -183,4 +183,7 @@
         name: LastEntry
         data: 2019
         type: dword
-        state: present
+        state: present 
+
+
+        
