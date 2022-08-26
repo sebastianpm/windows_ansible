@@ -1,9 +1,13 @@
-- hosts: all
-  become: no
-  gather_facts: yes
-
+---
+- name: date and time demo
+  hosts: win
+  gather_facts: true
   tasks:
-   - name: Display the availble timestamp format in Ansible
-     debug:
-      var=ansible_date_time
+    - name: date and time
+      ansible.builtin.debug:
+        var: ansible_date_time
+    - name: ISO8601
+      ansible.builtin.debug:
+        var: ansible_date_time.iso8601
+
 
