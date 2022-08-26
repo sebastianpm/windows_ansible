@@ -1,6 +1,6 @@
 ---
 - name: date and time demo
-  hosts: win
+  hosts: all
   gather_facts: true
   tasks:
     - name: date and time
