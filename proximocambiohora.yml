@@ -1,10 +1,23 @@
-- name: win_shell module demo
-  hosts: win
+
+- hosts: win
   tasks:
-    - name: check getdate
-      ansible.windows.win_shell: |
-        hostname
-        Get-Date
-        Get-CimInstance Win32_TimeZone | select DaylightDay
-      register: result
-      ignore_errors: True
+
+  -  name: Reinciar servicio hora windows
+
+     win_service:
+
+       name: w32time
+
+       state: restarted
+
+  - name: Crear archivo cambiohora.ps1
+    win_shell: Set-Content -Path C:\temp\cambiohora.ps1 -Value 'Get-CimInstance Win32_TimeZone | select DaylightDay'
+
+  - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\Temp\cambiohora.ps1
+
+  - name: Run a script
+    win_shell: C:\temp\cambiohora.ps1
+    register: proximahora
+  - debug: var=proximahora.stdout_lines
