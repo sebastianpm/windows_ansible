@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+
+  - name: Single line PowerShell
+    win_shell: Set-Content -Path C:\temp\test_output2.ps1 -Value 'Get-CimInstance Win32_TimeZone | select *'
+
+  - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\Temp\test_output2.ps1
+
+  - name: Run a script
+    win_shell: C:\temp\test_output2.ps1
