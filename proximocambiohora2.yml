@@ -2,7 +2,7 @@
   tasks:
 
   - name: Single line PowerShell
-    win_shell: Set-Content -Path C:\temp\test_output2.ps1 -Value 'Get-CimInstance Win32_TimeZone | select *'
+    win_shell: Set-Content -Path C:\temp\test_output2.ps1 -Value 'Get-CimInstance Win32_TimeZone | select DaylightDay'
 
   - name: Run multi-lined shell commands
     win_shell: |
@@ -10,3 +10,9 @@
 
   - name: Run a script
     win_shell: C:\temp\test_output2.ps1
+    register: result1
+  - debug: var=result1.stdout_lines
+
+  - name: Process win_shell output
+    set_fact:
+      vms: "{{ result1.stdout | regex_findall('(?<=DaylightDay: )(.*)') }}"
