@@ -1,4 +1,3 @@
-
 - hosts: all
   tasks:
 
@@ -11,12 +10,11 @@
        state: restarted
 
   - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-CimInstance Win32_TimeZone | select DaylightDay'
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-CimInstance Win32_TimeZone | select DaylightDay | Format-Wide'
 
   - name: Run multi-lined shell commands
     win_shell: |
         $text = Get-Content C:\cambiohora.ps1
-
   - name: Run a script
     win_shell: C:\cambiohora.ps1
     register: proximahora
