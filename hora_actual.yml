@@ -6,8 +6,8 @@
     - name: date and time
       ansible.builtin.debug:
         var: ansible_date_time
-    - name: ISO8601
+    - name: Hora actual del servidor
       ansible.builtin.debug:
-        var: ansible_date_time.iso8601
+        var: ansible_date_time.time
 
 
