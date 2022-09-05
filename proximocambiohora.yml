@@ -1,9 +1,5 @@
 - hosts: all
   tasks:
-
-  -  name: Reinciar servicio hora windows
-
-
   - name: Crear archivo cambiohora.ps1
     win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-CimInstance Win32_TimeZone | select DaylightDay | Format-Wide'
 
