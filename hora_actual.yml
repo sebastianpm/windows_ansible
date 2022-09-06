@@ -1,7 +1,8 @@
 ---
 - name: date and time demo
   hosts: all
-  gather_facts: true
+  serial: "80%"
+  gather_facts: false
   tasks:
     - name: date and time
       ansible.builtin.debug:
