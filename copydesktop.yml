@@ -2,6 +2,8 @@
 ---
 - name: win_copy module demo
   hosts: all
+  collections: 
+   - community.windows
   become: false
   gather_facts: false
   vars:
