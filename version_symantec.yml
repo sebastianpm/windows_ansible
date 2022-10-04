@@ -2,7 +2,7 @@
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-WmiObject -Class Win32_Product | Where-Object {$_.Vendor -Match "Symantec"} | Select-Object Vendor, Name,Version'
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -Match "Symantec Endpoint"} | Select-Object Vendor, Name,Version'
 
   - name: Run multi-lined shell commands
     win_shell: |
@@ -10,4 +10,4 @@
   - name: Run a script
     win_shell: C:\cambiohora.ps1
     register: proximahora
-  - debug: var=proximahora.stdout_lines
+  - debug: var=proximahora.stdout_liness
