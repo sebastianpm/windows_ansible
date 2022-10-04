@@ -11,6 +11,3 @@
     win_shell: C:\cambiohora.ps1
     register: proximahora
   - debug: var=proximahora.stdout_lines
-
-
-  Get-WmiObject -Class Win32_Product | Where-Object {$_.Vendor -Match "Symantec"} | Select-Object Vendor, Name
