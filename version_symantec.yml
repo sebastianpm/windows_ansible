@@ -10,4 +10,4 @@
   - name: Run a script
     win_shell: C:\cambiohora.ps1
     register: proximahora
-  - debug: var=proximahora.stdout_liness
+  - debug: var=proximahora.stdout_line
