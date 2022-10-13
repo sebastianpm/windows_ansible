@@ -1,0 +1,11 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+
+   - name: restart service zabbix
+
+     win_service:
+
+       name: Zabbix Agent 2
+
+       state: restarted
