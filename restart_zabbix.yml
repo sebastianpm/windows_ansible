@@ -1,8 +1,8 @@
 - hosts: all
-
+  gather_facts: false
   tasks:
 
-   - name: restart service zabbix
+   - name: Reinicio Agente Zabbix Windows
 
      win_service:
 
