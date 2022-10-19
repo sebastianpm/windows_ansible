@@ -6,5 +6,4 @@
     args:
         executable: cmd
     register: out
-
   - debug: var=out.stdout_lines
