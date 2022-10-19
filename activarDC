@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: activar DC 20.X
+    win_shell: "C:\Program Files\Trend Micro\Deep Security Agent\dsa_control.cmd" -a dsm://192.168.215.156:4120/
+    args:
+        executable: cmd
+    register: out
+
+  - debug: var=out.stdout_lines
