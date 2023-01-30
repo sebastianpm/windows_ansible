@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - name: Clave infra no expira
+    win_shell: wmic useraccount where "Name='infra'" set PasswordExpires=false
+    args:
+        executable: cmd
+    register: out
+
+  - debug: var=out.stdout_lines
