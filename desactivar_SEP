@@ -1,0 +1,9 @@
+----
+- hosts: all
+  tasks:
+  - name: activar Deep Security version 20.X
+    win_shell: '"C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\smc" smc -stop'
+    args:
+        executable: cmd
+    register: out
+  - debug: var=out.stdout_lines
