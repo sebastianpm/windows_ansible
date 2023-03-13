@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
   - name: activar DC 20.X
-    win_shell: '"C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\smc" smc -stop'
+    win_shell: '"C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\smc" -stop'
     args:
         executable: cmd
     register: out
