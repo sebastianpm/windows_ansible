@@ -1,13 +1,10 @@
+---
 - hosts: all
   gather_facts: false
   tasks:
-  - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'start "C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\smc.exe" smc-stop'
-
-  - name: Run multi-lined shell commands
-    win_shell: |
-        $text = Get-Content C:\cambiohora.ps1
-  - name: Run a script
-    win_shell: C:\cambiohora.ps1
-    register: proximahora
-  - debug: var=proximahora.stdout_lines
+  - name: activar DC 20.X
+    win_shell: '"C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\smc" smc -stop'
+    args:
+        executable: cmd
+    register: out
+  - debug: var=out.stdout_lines
