@@ -2,7 +2,7 @@
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value '(Get-Date).IsDaylightSavingTime()'
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-Date -DisplayHint Date -Date (Get-Date).AddMonths(6).Date | Select-Object -Property Date, @{Name="IsDST";Expression={$_.IsDaylightSavingTime()}}'
 
   - name: Run multi-lined shell commands
     win_shell: |
