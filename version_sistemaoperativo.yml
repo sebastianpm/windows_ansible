@@ -2,7 +2,7 @@
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture'
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture | Format-Custom'
 
   - name: Run multi-lined shell commands
     win_shell: |
