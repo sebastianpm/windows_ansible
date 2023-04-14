@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: "Stop LansweeperAgent"
+      win_service:
+        name: LansweeperAgentService
+        state: stopped
+    - name: "Remove timestamps from LsAgent.ini"
+      win_lineinfile:
+        path: C:\Program Files (x86)\LansweeperAgent\LsAgent.ini
+        regex: ^Last
+        state: absent
+    - name: "Start LansweeperAgent"
+      win_service:
+        name: LansweeperAgentService
+        state: started
