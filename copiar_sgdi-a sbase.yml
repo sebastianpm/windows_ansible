@@ -2,7 +2,20 @@
 - hosts: all
   tasks:
   - name: Execute command in Windows
-    win_shell: 'robocopy "\\10.110.15.177\sgdi" "C:\Software_Base" LsAgent-windows.exe /xc'
+    win_shell: ''
 
     args:
         executable: cmd
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Crear archivo cambiohora.ps1
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'robocopy "\\10.110.15.177\sgdi" "C:\Software Base" LsAgent-windows.exe /xc'
+
+  - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\cambiohora.ps1
+  - name: Run a script
+    win_shell: C:\cambiohora.ps1
+    register: proximahora
+  - debug: var=proximahora.stdout_lines
