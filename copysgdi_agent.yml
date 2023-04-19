@@ -1,4 +1,3 @@
-copyfile
 ---
 - name: win_copy module demo
   hosts: all
