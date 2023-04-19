@@ -11,3 +11,11 @@
     win_shell: C:\cambiohora.ps1
     register: proximahora
   - debug: var=proximahora.stdout_lines
+  
+- name: Execute command in Windows
+    win_shell: net localgroup Administrators bupa\sgdi /add
+    args:
+        executable: cmd
+    register: out
+
+  - debug: var=out.stdout_lines
