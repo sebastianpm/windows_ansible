@@ -1,0 +1,14 @@
+copyfile
+---
+- name: win_copy module demo
+  hosts: all
+  become: false
+  gather_facts: false
+  vars:
+    source: "\\10.110.15.177\sgdi\LsAgent-windows.exe"
+    destination: "C:\Software Base\LsAgent-windows.exe"
+  tasks:
+    - name: copy LsAgent-windows.exe
+      ansible.windows.win_copy:
+        src: "{{ source }}"
+        dest: "{{ destination }}"
