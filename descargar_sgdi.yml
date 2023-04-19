@@ -8,3 +8,4 @@
       win_get_url:
         URL: https://content.lansweeper.com/lsagent-windows/
         dest: 'C:\Software Base\LsAgent-windows.exe'
+        force: True
