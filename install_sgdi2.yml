@@ -1,6 +1,4 @@
 - hosts: all
-  roles:
-    - role: add_sgdi_cmd.yml
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
