@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
   - name: Execute command in Windows
-    win_shell: robocopy '"\\10.110.15.177\sgdi\LsAgent-windows.exe" "C:\Software Base" LsAgent-windows.exe /xc'
+    win_shell: 'robocopy "\\10.110.15.177\sgdi\LsAgent-windows.exe" "C:\Software Base" LsAgent-windows.exe /xc'
 
     args:
         executable: cmd
