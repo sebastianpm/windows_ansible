@@ -1,11 +1,11 @@
-- hosts: all
-
-tasks:
-
-- name: Download the Apache installer
-
-win_get_url:
-
-URL: https://cdn.lansweeper.com/download/10.4.1/3/LansweeperSetup.exe
-
-dest: 'C:\Software Base\LansweeperSetup.exe'
+---
+- name: descargar sgdi
+  hosts: all
+  vars:
+    usr_name: 'infra'
+    usr_password: 'PactoDeSangre.2017'
+  tasks:
+    - name: descargar archivo
+      win_get_url:
+        URL: https://cdn.lansweeper.com/download/10.4.1/3/LansweeperSetup.exe
+        dest: 'C:\Software Base\LansweeperSetup.exe'
