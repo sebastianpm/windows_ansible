@@ -2,8 +2,7 @@
 - name: descargar sgdi
   hosts: all
   vars:
-    usr_name: 'infra'
-    usr_password: 'PactoDeSangre.2017'
+
   tasks:
     - name: descargar archivo
       win_get_url:
