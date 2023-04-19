@@ -2,10 +2,7 @@
 - hosts: all
   tasks:
   - name: Execute command in Windows
-    win_shell: mkdir 'C:\Software Base' /if not exist
+    win_shell: mkdir "C:\Software Base" /if not exist
 
     args:
         executable: cmd
-    register: out
-
-  - debug: var=out.stdout_lines
