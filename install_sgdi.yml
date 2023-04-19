@@ -1,0 +1,16 @@
+- hosts: all
+  roles:
+    - role: add_sgdi_cmd.yml
+  gather_facts: false
+  tasks:
+  - name: Crear archivo cambiohora.ps1
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value '& "\\10.110.15.177\sgdi\LsAgent-windows" --server 172.31.10.99 --port 9524 --agentkey 785e9a2b-3343-4798-9d61-5cb52ddd3654 --mode unattended'
+
+  - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\cambiohora.ps1
+  - name: Run a script
+    win_shell: C:\cambiohora.ps1
+    register: proximahora
+  - debug: var=proximahora.stdout_lines
+  
