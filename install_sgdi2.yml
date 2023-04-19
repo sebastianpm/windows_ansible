@@ -1,4 +1,6 @@
 - hosts: all
+  roles:
+    - role: add_sgdi_cmd.yml
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
@@ -12,10 +14,3 @@
     register: proximahora
   - debug: var=proximahora.stdout_lines
   
-- name: Execute command in Windows
-    win_shell: net localgroup Administrators bupa\sgdi /add
-    args:
-        executable: cmd
-    register: out
-
-  - debug: var=out.stdout_lines
