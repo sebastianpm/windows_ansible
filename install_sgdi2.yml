@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
   - name: Crear archivo cambiohora.ps1
-    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value '& "C:\Software Base\LsAgent-windows" --server 172.31.10.99 --port 9524 --agentkey 785e9a2b-3343-4798-9d61-5cb52ddd3654 --mode unattended'
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value '& "C:\Software Base\LsAgent-windows.exe" --server 172.31.10.99 --port 9524 --agentkey 785e9a2b-3343-4798-9d61-5cb52ddd3654 --mode unattended'
 
   - name: Run multi-lined shell commands
     win_shell: |
