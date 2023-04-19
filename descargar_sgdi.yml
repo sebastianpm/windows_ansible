@@ -1,0 +1,13 @@
+- name: Installing Apache MSI
+
+hosts: all
+
+tasks:
+
+- name: Download the Apache installer
+
+win_get_url:
+
+URL: https://cdn.lansweeper.com/download/10.4.1/3/LansweeperSetup.exe
+
+dest: C:\Software Base\LansweeperSetup.exe
