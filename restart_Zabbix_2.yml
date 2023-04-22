@@ -4,7 +4,6 @@
     win_shell: |
         @echo off
     setlocal
-
     set serviceName="Zabbix Agent 2"
     set logFile=C:\Logs\{{ ansible_hostname }}_service.log
 
