@@ -6,7 +6,7 @@
         @echo off
     setlocal
 
-    set serviceName=NombreDelServicio
+    set serviceName="Zabbix Agent 2"
     set logFile=C:\Logs\{{ ansible_hostname }}_service.log
 
     sc query "%serviceName%" | find "STATE" | find /v "RUNNING" > nul
