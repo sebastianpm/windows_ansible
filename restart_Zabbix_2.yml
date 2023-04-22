@@ -1,20 +1,8 @@
+---
 - hosts: all
   tasks:
   - name: Execute command in Windows
-    win_shell: |
-        @echo off
-    setlocal
-    set serviceName="Zabbix Agent 2"
-    set logFile=C:\Logs\{{ ansible_hostname }}_service.log
-
-    sc query "%serviceName%" | find "STATE" | find /v "RUNNING" > nul
-
-    if %errorlevel% == 0 (
-        echo [%date% %time%] Servicio "%serviceName%" no está en ejecución. Iniciando... >> %logFile%
-        net start "%serviceName%" >> %logFile% 2>&1
-    ) else (
-        echo [%date% %time%] Servicio "%serviceName%" ya está en ejecución. No es necesario iniciar. >> %logFile%
-    )
+    win_shell: sc query "Zabbix Agent 2" | find "STATE" | find /v "RUNNING" && net start "Zabbix Agent 2" >> \\10.110.15.177\sgdi\%computername%.txt
     args:
         executable: cmd
     register: out
