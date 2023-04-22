@@ -1,8 +1,7 @@
+---
 - hosts: all
-  gather_facts: false
   tasks:
-  
-  - name: Run multi-lined shell commands
+  - name: Execute command in Windows
     win_shell: |
         @echo off
     setlocal
@@ -18,3 +17,8 @@
     ) else (
         echo [%date% %time%] Servicio "%serviceName%" ya está en ejecución. No es necesario iniciar. >> %logFile%
     )
+    args:
+        executable: cmd
+    register: out
+
+  - debug: var=out.stdout_lines
