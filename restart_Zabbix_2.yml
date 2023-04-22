@@ -1,0 +1,20 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+  
+  - name: Run multi-lined shell commands
+    win_shell: |
+        @echo off
+    setlocal
+
+    set serviceName=NombreDelServicio
+    set logFile=C:\Logs\{{ ansible_hostname }}_service.log
+
+    sc query "%serviceName%" | find "STATE" | find /v "RUNNING" > nul
+
+    if %errorlevel% == 0 (
+        echo [%date% %time%] Servicio "%serviceName%" no está en ejecución. Iniciando... >> %logFile%
+        net start "%serviceName%" >> %logFile% 2>&1
+    ) else (
+        echo [%date% %time%] Servicio "%serviceName%" ya está en ejecución. No es necesario iniciar. >> %logFile%
+    )
