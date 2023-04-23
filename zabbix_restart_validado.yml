@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+       
+    - name: Verificar estado del servicio MyService
+      win_service:
+        name: Zabbix Agent 2
+      register: service_status
+
+    - name: Reiniciar MyService si está detenido
+      win_service:
+        name: Zabbix Agent 2
+        state: restarted
+      when: service_status.state == 'stopped'
