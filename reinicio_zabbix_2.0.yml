@@ -1,0 +1,11 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+
+   - name: Reinicio Agente Zabbix Windows
+
+     win_service:
+
+       name: Zabbix Agent 2
+
+       state: started
