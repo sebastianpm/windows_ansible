@@ -13,6 +13,13 @@
         state: restarted
       when: service_status.state == 'stopped'
       register: service_restart_result
+      
+    - name: Escribir registro de reinicio de MyService de manera local
+      copy:
+        content: "MyService fue reiniciado en {{ ansible_date_time.iso8601 }} por {{ ansible_user_id }}.\n"
+        dest: "C:\\logs\\restart.log"
+        mode: "0644"
+      when: service_restart_result.changed
 
     - name: Escribir registro de reinicio de MyService en archivo de registro compartido
       win_copy:
