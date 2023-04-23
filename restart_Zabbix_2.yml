@@ -1,10 +1,22 @@
----
 - hosts: all
+  gather_facts: false
   tasks:
-  - name: Execute command in Windows
-    win_shell: sc query "Zabbix Agent 2" | find "STATE" | find /v "RUNNING" && net start "Zabbix Agent 2" >> \\10.110.15.177\sgdi\%computername%.txt
-    args:
-        executable: cmd
-    register: out
+       
+    - name: Verificar estado del servicio MyService
+      win_service:
+        name: Zabbix Agent 2
+      register: service_status
 
-  - debug: var=out.stdout_lines
+    - name: Reiniciar MyService si está detenido
+      win_service:
+        name: MyService
+        state: restarted
+      when: service_status.state == 'stopped'
+      register: service_restart_result
+
+    - name: Escribir registro de reinicio de MyService en archivo de registro compartido
+      win_copy:
+        src: "C:\\logs\\restart.log"
+        dest: "\\\\10.110.15.177\\sgdi\\{{ inventory_hostname }}-restart.log"
+        force: yes
+      when: service_restart_result.changed
