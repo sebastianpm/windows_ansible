@@ -9,7 +9,7 @@
 
     - name: Reiniciar MyService si está detenido
       win_service:
-        name: MyService
+        name: Zabbix Agent 2
         state: restarted
       when: service_status.state == 'stopped'
       register: service_restart_result
