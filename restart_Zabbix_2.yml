@@ -2,12 +2,12 @@
   gather_facts: false
   tasks:
        
-    - name: Verificar estado del servicio MyService
+    - name: Verificar estado del servicio Zabbix Agent 2
       win_service:
         name: Zabbix Agent 2
       register: service_status
 
-    - name: Reiniciar MyService si está detenido
+    - name: Reiniciar Zabbix Agent 2 si está detenido
       win_service:
         name: Zabbix Agent 2
         state: restarted
