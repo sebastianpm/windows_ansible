@@ -1,0 +1,13 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Crear archivo cambiohora.ps1
+    win_shell: Set-Content -Path C:\cambiohora.ps1 -Value 'msiexec /i "C:/vicarius/Topia_CMD_Setup_x64.msi" /qb SecretKey=Qp2ZnjqNxXqa9H53Y36zFzG60EoWQ9x0Nvh0N88NmuuNkSMxRdzo7VgkoxJUkH4RGp0Z3IOpNfbjMSHpG2GYsbV2QMX0iSdzaTJiOZriifegeVdky9nHYe4YWC7ZNS3gh0ilLgDpUBPrl5sBFlo0qHeWGF8zM5JOmXYJ9deNnY5bmmK0Nvr1KcuugKTzf5JLmQOlHvNtgJzPY3X8cEB8KY9yRb81dubWbaHZTG5TBAdzzLd5uJwEsjv22ZWKZIV0 Hostname=https://bupa-chile-sa-api-gateway.vicarius.cloud/vicarius-endpoint-api AgentType=LocalAgent ProxyAddress=192.168.215.60:3128 EndpointTag=PROXY:GTD'
+
+  - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\cambiohora.ps1
+  - name: Run a script
+    win_shell: C:\cambiohora.ps1
+    register: proximahora
+  - debug: var=proximahora.stdout_lines
