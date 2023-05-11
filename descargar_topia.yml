@@ -1,0 +1,11 @@
+---
+- name: descargar sgdi
+  hosts: all
+  vars:
+
+  tasks:
+    - name: descargar archivo
+      win_get_url:
+        URL: https://vicarius-release.s3.amazonaws.com/latest-Topia/Topia_CMD_Setup_x64.msi
+        dest: 'C:\Software Base\Topia_CMD_Setup_x64.msi'
+        force: True
