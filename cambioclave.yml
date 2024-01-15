@@ -3,7 +3,7 @@
   hosts: all
   vars:
     usr_name: 'infra'
-    usr_password: 'PactoDeSangre.2017'
+    usr_password: '#ChilefuecampeondeAmericaen2015.'
   tasks:
     - name: change password
       ansible.windows.win_user:
